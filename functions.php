@@ -121,7 +121,7 @@ function my_custom_options_page_callback() {
                 </tr>
                 <tr>
                     <th scope="row"><label for="cta_button_url"><?php _e('Button URL', 'textdomain'); ?></label></th>
-                    <td><input type="url" id="cta_button_url" name="cta_button_url" value="<?php echo esc_attr(get_option('cta_button_url', '')); ?>" class="regular-text" /></td>
+                    <td><input type="url" id="cta_button_url" name="cta_button_url" value="<?php echo esc_attr(get_option('cta_button_url', '')); ?>" class="regular-text" placeholder="<?php echo home_url(); ?>"/></td>
                 </tr>
             </table>
             <?php submit_button(); ?>
@@ -216,6 +216,17 @@ function custom_breadcrumbs() {
 
         echo '</ol>';
         echo '</nav>';
+    }
+}
+
+add_action('template_redirect', 'redirect_if_404');
+function redirect_if_404() {
+    if ( is_404() ) {
+        // Remember to change the /path-to-go with the URL you like to redirect the users.
+        // 301 is permanent redirect. 302 is Temporary redirect.
+        wp_redirect(esc_url(home_url('/pages/404-error/')), 301);
+        // And here will stop the file execution.
+        exit();
     }
 }
 

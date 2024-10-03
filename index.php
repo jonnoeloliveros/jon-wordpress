@@ -1,7 +1,5 @@
 <?php
     get_header();
-
-    // WordPress loop to display posts or pages
     if ( have_posts() ) {
         while ( have_posts() ) {
             the_post();
