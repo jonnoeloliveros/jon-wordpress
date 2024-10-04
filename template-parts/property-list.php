@@ -74,6 +74,7 @@
                                         
                                         global $product;
                                         $the_title = get_the_title();
+                                        $product_link = get_the_permalink();
                                         $product_price = ($product->get_price()) ? '<h5 class="text-primary mb-3">' . wc_price( $product->get_price() ) . '</h5>' : '';
                                         $categories = get_the_terms( get_the_ID(), 'product_cat' );
                                         $product_image = get_the_post_thumbnail( get_the_ID(), 'full', array( 'class' => 'img-fluid' ) );
@@ -103,13 +104,13 @@
                                         echo '<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                                             <div class="property-item rounded overflow-hidden">
                                                 <div class="position-relative overflow-hidden">
-                                                    <a href="">' . $product_image . '</a>
+                                                    <a href="' . $product_link . '">' . $product_image . '</a>
                                                     <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">' . $tags_string . '</div>
                                                     <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">' . $categories_list . '</div>
                                                 </div>
                                                 <div class="p-4 pb-0">
                                                     ' . $product_price . '
-                                                    <a class="d-block h5 mb-2" href="">' . $the_title . '</a>
+                                                    <a class="d-block h5 mb-2" href="' . $product_link . '">' . $the_title . '</a>
                                                     ' . $product_address . '
                                                 </div>
                                                 <div class="d-flex border-top">

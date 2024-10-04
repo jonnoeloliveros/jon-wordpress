@@ -10,8 +10,9 @@ function custom_breadcrumbs() {
 
     // Check if we're not on the homepage
     if (!is_front_page()) {
+        $is_search = (is_search()) ? ' justify-content-center' : '';
         echo '<nav aria-label="breadcrumb animated fadeIn">';
-        echo '<ol class="breadcrumb text-uppercase">';
+        echo '<ol class="breadcrumb text-uppercase' . $is_search . '">';
 
         // Home (always present)
         echo '<li class="breadcrumb-item"><a href="' . home_url() . '">' . $home_title . '</a></li>';
